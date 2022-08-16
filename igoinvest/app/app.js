@@ -11,7 +11,7 @@ const userInViews = require('./lib/middleware/userInViews');
 const authRouter = require('./routes/auth');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const mysql = require('mysql');
+const mysql = require("mysql");
 
 const con = mysql.createConnection({
   host: "eu-cdbr-west-03.cleardb.net",
