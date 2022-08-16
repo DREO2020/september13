@@ -11,6 +11,14 @@ const userInViews = require('./lib/middleware/userInViews');
 const authRouter = require('./routes/auth');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const mysql = require('mysql');
+
+const con = mysql.createConnection({
+  host: "eu-cdbr-west-03.cleardb.net",
+  user: "beb92eb3ab6f15",
+  password: "ff56b22b",
+  database: "heroku_171d315680ef991"
+});
 
 dotenv.config();
 
