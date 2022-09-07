@@ -999,8 +999,7 @@ head
         .bar-item
           a.site-logo-white.bar-logo(href='/' title='Tiger Trade') Tiger Trade
           .d-flex
-            a.bottom-bar-btn.white.mr-2(href='/login?next=%2Faccount%2Fintro' data-sensors-trace='{"type":"页面下载条","name":"登录按钮点击","entrance_type":"Header_login"}')
-              | LOGIN
+            a(id="qsLoginBtn" href="/login").w3-bar-item.w3-button Log In
             a.bottom-bar-btn(href='/signup' data-sensors-trace='{"type":"页面下载条","name":"注册按钮点击","entrance_type":"Header_signup"}')
               | SIGN UP
         .bar-item
