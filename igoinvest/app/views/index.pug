@@ -1,8 +1,1177 @@
-extends layout
-
-block content
-  .w3-container
-    if locals.user
-      h4 Test HELLO!
-    else
-      h4 You are not logged in! Please #[a(href="/login") Log In] to continue.
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, shrink-to-fit=no')
+  title 8B Project
+  meta(name='description' content="Tiger Brokers is an online broker listed on NASDAQ. A powerful, licensed broker for global trading. Tiger's platform is convenient, easy to use, and provides a rich range of securities.")
+  meta(name='keywords' content='Tiger Brokers, U.S. stock trading, Hong Kong stock trading, trading U.S. stocks, stock information, stock prices, U.S. stock quotes, U.S. stock trading, Hong Kong stock trading, IPO trading, buying U.S. stocks, global investment')
+  meta(name='author' content='tigerbrokers')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge,chrome=1')
+  meta(name='renderer' content='webkit')
+  meta(name='apple-itunes-app' content='app-id=1023600494')
+  meta(name='google-play-app' content='app-id=com.tigerbrokers.stock')
+  meta(name='theme-color' content='#ffe100')
+  meta(name='msapplication-TileColor' content='#000000')
+  meta(name='msapplication-TileImage' content='https://c1.itigergrowth.com/portal5/static/media/tiger.round.610c8be8.png')
+  meta(name='screen-orientation' content='portrait')
+  meta(name='x5-orientation' content='portrait')
+  meta(name='fullscreen' content='yes')
+  meta(name='full-screen' content='yes')
+  meta(name='x5-fullscreen' content='true')
+  meta(name='x5-page-mode' content='app')
+  meta(name='nightmode' content='disable')
+  meta(name='wap-font-scale' content='no')
+  meta(name='apple-mobile-web-app-capable' content='yes')
+  meta(name='apple-mobile-web-app-status-bar-style' content='black-translucent')
+  meta(name='apple-mobile-web-app-title' content='Tiger Trade Homepage')
+  meta(name='facebook-domain-verification' content='uh6rkcckhy6afy4jvfe53jyjed7dzw')
+  link(rel='shortcut icon' href='/favicon.ico')
+  link(rel='icon' type='image/x-icon' sizes='16x16 32x32' href='/favicon.ico')
+  link(rel='apple-touch-icon' href='https://c1.itigergrowth.com/portal5/static/media/logo.152.b51dd151.png' sizes='152x152')
+  link(rel='apple-touch-icon' href='https://c1.itigergrowth.com/portal5/static/media/logo.120.c40a0c60.png' sizes='120x120')
+  link(rel='apple-touch-icon' href='https://c1.itigergrowth.com/portal5/static/media/logo.76.ba630aec.png' sizes='76x76')
+  link(rel='apple-touch-icon' href='https://c1.itigergrowth.com/portal5/static/media/logo.60.1218cf9a.png' sizes='60x60')
+  meta(name='google' content='notranslate')
+  link(rel='license' href='/info/declaration')
+  link(rel='me' href='mailto:service@tigerbrokers.com.sg')
+  link(rel='me' href='sms:+6569500591')
+  link(rel='stylesheet' href='https://c1.itigergrowth.com/portal5/static/css/vendor.d6537cdb.css')
+  link(rel='stylesheet' href='https://c1.itigergrowth.com/portal5/static/css/common.29b565a6.css')
+  link(rel='stylesheet' href='https://c1.itigergrowth.com/portal5/static/css/homepage/index.b5eadd1c.css')
+  style(type='text/css').
+    /* SL: change original to igoinvest background image */
+    body {background-image:url('https://i.postimg.cc/vBFw98zV/technical-Analysis.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;}
+    /* SL: .logo is for igoinvest robot image */
+    .logo {
+    width: 50px;}
+    /* SL change the header color */
+    .site-primary-nav-backdrop {
+    background-color: #a692f6;
+    box-shadow: 0 10px 10px rgb(0 0 0 / 10%);
+    height: 0;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    transition: height .2s ease-in;}
+    .site-header {
+    background: #d5d4d7;
+    position: relative;
+    position: -webkit-sticky;
+    position: sticky;
+    top: -.5px;
+    transition: top .4s ease;
+    transition: .3s ease-out;
+    z-index: 12;
+    }
+    /* SL change the Disclaimer font color */
+    .homepage-notice {
+    color: #fbf5f5;
+    position: relative;}
+    .agl-hover {
+    outline: 2px solid rgba(244,67,54,0.99) !important;
+    background-color: rgba(244,67,54,0.2) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8) !important;
+    }
+    .agl-highlight-current {
+    outline: 2px solid rgba(255,87,34,0.99) !important;
+    background-color: rgba(255,87,34,0.4) !important;
+    }
+    .agl-highlight-similar {
+    outline: 2px dashed rgba(255,87,34,0.99) !important;
+    background-color: rgba(255,87,34,0.4) !important;
+    }
+    .agl-highlight-group {
+    outline: 4px double rgba(255,87,34,0.99) !important;
+    background-color: rgba(255,87,34,0.4) !important;
+    }
+    .agl-cover-current {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    z-index: 9 !important;
+    outline: 2px solid rgba(33,33,33,0.99) !important;
+    background-color: rgba(33,33,33,0.6) !important;
+    }
+    .agl-cover-similar {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    z-index: 9 !important;
+    outline: 2px dashed rgba(33,33,33,0.99) !important;
+    background-color: rgba(33,33,33,0.6) !important;
+    }
+    .agl-cover-group {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    z-index: 9 !important;
+    outline: 4px double rgba(33,33,33,0.99) !important;
+    background-color: rgba(33,33,33,0.6) !important;
+    }
+    .agl-cover-focus {
+    outline: 3px solid rgba(255,165,0,0.99) !important;
+    background-color: rgba(255,165,0,0.4) !important;
+    }
+  script(type='text/javascript' async='' src='https://www.google-analytics.com/analytics.js')
+  script(type='text/javascript' async='' src='https://www.googletagmanager.com/gtag/js?id=UA-84552874-1&l=dataLayer&cx=c')
+  script(type='text/javascript' async='' src='https://www.googleadservices.com/pagead/conversion_async.js')
+  script(src='//bat.bing.com/bat.js' async='')
+  script(src='https://www.redditstatic.com/ads/pixel.js' async='')
+  script(src='https://connect.facebook.net/signals/config/625055665187138?v=2.9.75&r=stable' async='')
+  script(async='' src='https://connect.facebook.net/en_US/fbevents.js')
+  script(async='' src='https://c1.itigergrowth.com/libs/sensors/1.23.3/sensorsdata.min.js' charset='UTF-8')
+  script(type='text/javascript' async='' src='https://fxgate.baidu.com/angelia/fcagl.js?production=_f7L2XwGXjyszb4d1e2oxPybgD')
+  script(src='https://hm.baidu.com/hm.js?addd4005c404742dd8dad164ad6f986d')
+  script(async='' src='https://www.googletagmanager.com/gtm.js?id=GTM-N5TBBK3')
+  script(async='' src='https://www.googletagmanager.com/gtag/js?id=AW-10807719466')
+  script.
+    var SETTINGS = {
+    isProfileHost: false,
+    region: 'SGP',
+    lang: 'en_US',
+    license: 'TBSG',
+    location: 'SGP',
+    currentUser: null,
+    guestUser: null
+    };
+    var __downloadLinksMap = {"TCP":{"ios":"https://apps.apple.com/cn/app/id1485993365","android":"http://a.app.qq.com/o/simple.jsp?pkgname=com.tigerbrokers.stock","androidMarket":"market://details?id=com.tigerbrokers.stock","mac":"https://up.play-analytics.com/app/upgrade/web/latest?appVer=0&platform=darwin&appName=TigerTradeLite","windows":"https://up.play-analytics.com/app/upgrade/web/latest?appVer=0&platform=win32&appName=TigerTradeLite","region":"TCP"},"CHN":{"ios":"https://da.tigerfintech.com/r/8","android":"https://da.tigerfintech.com/r/g","androidMarket":"market://details?id=com.tigerbrokers.stock","mac":"https://up.play-analytics.com/app/upgrade/web/latest?appVer=0&platform=darwin&appName=TigerTrade","windows":"https://up.play-analytics.com/app/upgrade/web/latest?appVer=0&platform=win32&appName=TigerTrade","region":"CHN"},"SGP":{"ios":"https://da.tigerfintech.com/r/m","android":"https://da.tigerfintech.com/r/u","androidMarket":"market://details?id=com.tigerbrokers.stock","mac":"https://up.play-analytics.com/app/upgrade/web/latest?appVer=0&platform=darwin&appName=TigerTrade","windows":"https://up.play-analytics.com/app/upgrade/web/latest?appVer=0&platform=win32&appName=TigerTrade","region":"SGP"},"NZL":{"ios":"https://da.tigerfintech.com/r/V","android":"https://da.tigerfintech.com/r/u","androidMarket":"market://details?id=com.tigerbrokers.stock","mac":"https://up.play-analytics.com/app/upgrade/web/latest?appVer=0&platform=darwin&appName=TigerTrade","windows":"https://up.play-analytics.com/app/upgrade/web/latest?appVer=0&platform=win32&appName=TigerTrade","region":"NZL"},"AUS":{"ios":"https://da.tigerfintech.com/r/4","android":"https://da.tigerfintech.com/r/u","androidMarket":"market://details?id=com.tigerbrokers.stock","mac":"https://up.play-analytics.com/app/upgrade/web/latest?appVer=0&platform=darwin&appName=TigerTrade","windows":"https://up.play-analytics.com/app/upgrade/web/latest?appVer=0&platform=win32&appName=TigerTrade","region":"AUS"}};
+    var __downloadLinks = __downloadLinksMap['SGP'] || __downloadLinksMap.SGP;
+  // Analytics
+  // prettier-ignore
+  script.
+    /* Start: Google Global site tag(gtag) */
+    (function(i,s,o,g,r,a,m){a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.googletagmanager.com/gtag/js?id=AW-10807719466');
+    window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+    var __gtagConfig={"autoTrackPageView":true,"AW_id":"AW-10807719466","linkerDomains":["tigerbrokers.com.sg","itiger.com","itigerup.com","tigertcp.cn","tigerbrokers.com.au","tigerbrokers.nz","skytigris.com","mydigiuc.com","tigersecurities.com"],"GA_id":"UA-84552874-1"};
+    gtag('js', new Date());
+    gtag('config', 'AW-10807719466', { linker: { domains: ["tigerbrokers.com.sg","itiger.com","itigerup.com","tigertcp.cn","tigerbrokers.com.au","tigerbrokers.nz","skytigris.com","mydigiuc.com","tigersecurities.com"]} });
+    gtag('config', 'UA-84552874-1', { linker: { domains: ["tigerbrokers.com.sg","itiger.com","itigerup.com","tigertcp.cn","tigerbrokers.com.au","tigerbrokers.nz","skytigris.com","mydigiuc.com","tigersecurities.com"] } });
+    /* End: Google Global site tag (gtag) */
+    /* Start: Google Tag Manager */
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N5TBBK3');
+    /* End: Google Tag Manager */
+    /* Start: Baidu */
+    var _hmt = _hmt || [];
+    (function () {
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?addd4005c404742dd8dad164ad6f986d';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+    /* End: Baidu */
+    /* Start: Baidu OCPC */
+    window._agl = window._agl || [];
+    (function () {
+    _agl.push(['production', '_f7L2XwGXjyszb4d1e2oxPybgD']);
+    (function () {
+    var agl = document.createElement('script');
+    agl.type = 'text/javascript';
+    agl.async = true;
+    agl.src = 'https://fxgate.baidu.com/angelia/fcagl.js?production=_f7L2XwGXjyszb4d1e2oxPybgD';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(agl, s);
+    })();
+    })();
+    /* End: Baidu OCPC */
+    /* Start: Sensors */
+    (function(para) {
+    var p = para.sdk_url, n = para.name, w = window, d = document, s = 'script',x = null,y = null;
+    if(typeof(w['sensorsDataAnalytic201505']) !== 'undefined') {
+    return false;
+    }
+    w['sensorsDataAnalytic201505'] = n;
+    w[n] = w[n] || function(a) {return function() {(w[n]._q = w[n]._q || []).push([a, arguments]);}};
+    var ifs = ['track','quick','register','registerPage','registerOnce','trackSignup', 'trackAbtest', 'setProfile','setOnceProfile','appendProfile', 'incrementProfile', 'deleteProfile', 'unsetProfile', 'identify','login','logout','trackLink','clearAllRegister','getAppStatus','setItem','deleteItem','use'];
+    for (var i = 0; i < ifs.length; i++) {
+    w[n][ifs[i]] = w[n].call(null, ifs[i]);
+    }
+    if (!w[n]._t) {
+    x = d.createElement(s), y = d.getElementsByTagName(s)[0];
+    x.async = 1;
+    x.src = p;
+    x.setAttribute('charset','UTF-8');
+    w[n].para = para;
+    y.parentNode.insertBefore(x, y);
+    }
+    })({
+    sdk_url: 'https://c1.itigergrowth.com/libs/sensors/1.23.3/sensorsdata.min.js',
+    name: 'sensors',
+    server_url: 'https://da.tigerfintech.com/sa?project=production',
+    heatmap: {},
+    is_track_single_page:true,
+    use_client_time:true,
+    send_type:'beacon',
+    show_log: false
+    });
+    sensors.registerPage({ platform: /tigerbrokers|tradeup/i.test(navigator.userAgent) ? 'h5' : 'web' });
+    var __sensorsConfig = {"showLog":false,"heatmap":{},"autoTrack":true,"autoTrackArgs":{"invite_id":"WEBBI03"},"platform":"webBehavior","pageLeave":true};
+    sensors.use('PageLeave', { heartbeat_interval_time: 5 });
+    sensors.quick('autoTrack', {"invite_id":"WEBBI03"});
+    /* End: Sensors */
+    /* Start: fbq */
+    !function(f,b,e,v,n,t,s){
+    if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '625055665187138');
+    var __fbqInit = function(appId) {
+    fbq('init', appId);
+    };
+    fbq('track', 'PageView');
+    /* End: fbq */
+    /* Start: rdt */
+    !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);
+    rdt('init', 't2_b9hq2vbh');
+    rdt('track', 'PageVisit');
+    /* End: rdt */
+    /* Start: bing */
+    (function(w,d,t,r,u)
+    {var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:'137026706'};o.q=w[u],w[u]=w.UET?new UET(o):[],w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
+    /* End: bing */
+  // End Analytics
+  script(src='https://bat.bing.com/p/action/137026706.js' type='text/javascript' async='' data-ueto='ueto_f3a04bc7d9')
+  meta(http-equiv='origin-trial' content='A7bG5hJ4XpMV5a3V1wwAR0PalkFSxLOZeL9D/YBYdupYUIgUgGhfVJ1zBFOqGybb7gRhswfJ+AmO7S2rNK2IOwkAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjY5NzY2Mzk5LCJpc1RoaXJkUGFydHkiOnRydWV9')
+  script(type='text/javascript' async='' src='https://googleads.g.doubleclick.net/pagead/viewthroughconversion/10807719466/?random=1660973544311&cv=9&fst=1660973544311&num=1&bg=ffffff&guid=ON&resp=GooglemKTybQhCsO&eid=376635470&u_h=864&u_w=1536&u_ah=816&u_aw=1536&u_cd=24&u_his=3&u_tz=480&u_java=false&u_nplug=5&u_nmime=2&gtm=2oa8h0&sendb=1&ig=1&data=event%3Dgtag.config&frm=0&url=https%3A%2F%2Fwww.tigerbrokers.com.sg%2F&ref=https%3A%2F%2Fwww.tigerbrokers.com.sg%2F%3Finvite%3DWEBBI03%26utm_source%3DSEMBIB%26utm_medium%3DBrand%26utm_campaign%3DmsgSEMBIB-SG-%25E5%2593%2581%25E7%2589%258C%25E8%25AF%258D%25E6%25B1%2587-EM-en-%25E8%258B%25B1(220322%25E5%2588%2586%25E8%25AF%25AD%25E8%25A8%2580%255C0414%25E4%25BB%2585EM)%26utm_campaign_id%3D424497917%26adgroup_id%3D1355699506642423%26keyword_id%3Dkwd-84732224299839%3Aaud-813354065%3Aloc-164%26utm_term%3Dtiger%2520broker%26original_module%3Dad%26msclkid%3Db8bd9e4fdee81d523cdcfd4faf358494%26utm_content%3DBrand-EM-%25E5%2585%258D%25E4%25BD%25A3&tiba=Tiger%20Brokers%20_%20Hong%20Kong%20%2F%20U.S.%20Stock%20Market%20Quotes&auid=1974301231.1660908813&hn=www.googleadservices.com&async=1&rfmt=3&fmt=4')
+  style(type='text/css').
+  link(rel='stylesheet' type='text/css' href='https://c1.itigergrowth.com/portal5/static/css/602.1b4fffd4.css')
+  link(rel='stylesheet' type='text/css' href='https://c1.itigergrowth.com/portal5/static/css/1226.a5bf0f78.css')
+  link(rel='stylesheet' type='text/css' href='https://c1.itigergrowth.com/portal5/static/css/1458.38af8187.css')
+  script(src='https://c1.itigergrowth.com/libs/track/appsflyer/onelink-smart-script-2.1.1.js' crossorigin='anonymous')
+// prettier-ignore
+#wrap
+  nav.site-top-navbar
+    .container.navbar-collapse
+      button.btn.language-nav(data-lang='en_US')
+        | ENG/&#x4E2D;
+      button.btn.location-nav(data-code='SGP')
+        | Singapore
+    script.
+      var _TOPNAV_DATA = {
+      locate: [{"name":"Hot","children":[{"name":"Singapore","code":"SGP","region":"SGP","license":"TBSG"},{"name":"New Zealand","code":"NZL","region":"NZL","license":"TBNZ"},{"name":"Australia","code":"AUS","region":"AUS","license":"TBAU"}]},{"name":"Asia","children":[{"name":"Armenia","code":"ARM","region":"SGP","license":"TBSG"},{"name":"Bangladesh","code":"BGD","region":"SGP","license":"TBSG"},{"name":"Bhutan","code":"BTN","region":"SGP","license":"TBSG"},{"name":"Brunei","code":"BRN","region":"SGP","license":"TBSG"},{"name":"Cambodia","code":"KHM","region":"SGP","license":"TBSG"},{"name":"Georgia","code":"GEO","region":"SGP","license":"TBSG"},{"name":"India","code":"IND","region":"SGP","license":"TBSG"},{"name":"Indonesia","code":"IDN","region":"SGP","license":"TBSG"},{"name":"Israel","code":"ISR","region":"SGP","license":"TBSG"},{"name":"Japan","code":"JPN","region":"SGP","license":"TBSG"},{"name":"Jordan","code":"JOR","region":"SGP","license":"TBSG"},{"name":"Laos","code":"LAO","region":"SGP","license":"TBSG"},{"name":"Macau SAR","code":"MAC","region":"SGP","license":"TBSG"},{"name":"Malaysia","code":"MYS","region":"SGP","license":"TBSG"},{"name":"Maldives","code":"MDV","region":"SGP","license":"TBSG"},{"name":"Mongolia","code":"MNG","region":"SGP","license":"TBSG"},{"name":"Myanmar","code":"MMR","region":"SGP","license":"TBSG"},{"name":"Nepal","code":"NPL","region":"SGP","license":"TBSG"},{"name":"Oman","code":"OMN","region":"SGP","license":"TBSG"},{"name":"Philippines","code":"PHL","region":"SGP","license":"TBSG"},{"name":"Qatar","code":"QAT","region":"SGP","license":"TBSG"},{"name":"Singapore","code":"SGP","region":"SGP","license":"TBSG"},{"name":"South Korea","code":"KOR","region":"SGP","license":"TBSG"},{"name":"Sri Lanka","code":"LKA","region":"SGP","license":"TBSG"},{"name":"Thailand","code":"THA","region":"SGP","license":"TBSG"},{"name":"Timor-Leste","code":"TLS","region":"SGP","license":"TBSG"},{"name":"Turkmenistan","code":"TKM","region":"SGP","license":"TBSG"},{"name":"United Arab Emirates","code":"ARE","region":"SGP","license":"TBSG"},{"name":"Vietnam","code":"VNM","region":"SGP","license":"TBSG"}]},{"name":"Europe","children":[{"name":"Andorra","code":"AND","region":"SGP","license":"TBSG"},{"name":"Austria","code":"AUT","region":"SGP","license":"TBSG"},{"name":"Belgium","code":"BEL","region":"SGP","license":"TBSG"},{"name":"Bulgaria","code":"BGR","region":"SGP","license":"TBSG"},{"name":"Croatia","code":"HRV","region":"SGP","license":"TBSG"},{"name":"Czech Republic","code":"CZE","region":"SGP","license":"TBSG"},{"name":"Denmark","code":"DNK","region":"SGP","license":"TBSG"},{"name":"Estonia","code":"EST","region":"SGP","license":"TBSG"},{"name":"Finland","code":"FIN","region":"SGP","license":"TBSG"},{"name":"France","code":"FRA","region":"SGP","license":"TBSG"},{"name":"Germany","code":"DEU","region":"SGP","license":"TBSG"},{"name":"Gibraltar","code":"GIB","region":"SGP","license":"TBSG"},{"name":"Greece","code":"GRC","region":"SGP","license":"TBSG"},{"name":"Greenland","code":"GRL","region":"SGP","license":"TBSG"},{"name":"Guernsey","code":"GGY","region":"SGP","license":"TBSG"},{"name":"Hungary","code":"HUN","region":"SGP","license":"TBSG"},{"name":"Iceland","code":"ISL","region":"SGP","license":"TBSG"},{"name":"Ireland","code":"IRL","region":"SGP","license":"TBSG"},{"name":"Italy","code":"ITA","region":"SGP","license":"TBSG"},{"name":"Latvia","code":"LVA","region":"SGP","license":"TBSG"},{"name":"Liechtenstein","code":"LIE","region":"SGP","license":"TBSG"},{"name":"Lithuania","code":"LTU","region":"SGP","license":"TBSG"},{"name":"Luxembourg","code":"LUX","region":"SGP","license":"TBSG"},{"name":"Netherlands","code":"NLD","region":"SGP","license":"TBSG"},{"name":"North Macedonia","code":"MKD","region":"SGP","license":"TBSG"},{"name":"Norway","code":"NOR","region":"SGP","license":"TBSG"},{"name":"Poland","code":"POL","region":"SGP","license":"TBSG"},{"name":"Portugal","code":"PRT","region":"SGP","license":"TBSG"},{"name":"Romania","code":"ROU","region":"SGP","license":"TBSG"},{"name":"San Marino","code":"SMR","region":"SGP","license":"TBSG"},{"name":"Serbia","code":"SRB","region":"SGP","license":"TBSG"},{"name":"Slovakia","code":"SVK","region":"SGP","license":"TBSG"},{"name":"Slovenia","code":"SVN","region":"SGP","license":"TBSG"},{"name":"Spain","code":"ESP","region":"SGP","license":"TBSG"},{"name":"Sweden","code":"SWE","region":"SGP","license":"TBSG"},{"name":"Switzerland","code":"CHE","region":"SGP","license":"TBSG"},{"name":"United Kingdom","code":"GBR","region":"SGP","license":"TBSG"}]},{"name":"Oceania","children":[{"name":"Australia","code":"AUS","region":"AUS","license":"TBAU"},{"name":"Fiji","code":"FJI","region":"SGP","license":"TBSG"},{"name":"Kiribati","code":"KIR","region":"SGP","license":"TBSG"},{"name":"Micronesia","code":"FSM","region":"SGP","license":"TBSG"},{"name":"New Zealand","code":"NZL","region":"NZL","license":"TBNZ"},{"name":"Niue","code":"NIU","region":"SGP","license":"TBSG"},{"name":"Solomon Islands","code":"SLB","region":"SGP","license":"TBSG"},{"name":"Tonga","code":"TON","region":"SGP","license":"TBSG"}]},{"name":"Africa","children":[{"name":"Cape Verde","code":"CPV","region":"SGP","license":"TBSG"},{"name":"Comoros","code":"COM","region":"SGP","license":"TBSG"},{"name":"Ethiopia","code":"ETH","region":"SGP","license":"TBSG"},{"name":"Gabon","code":"GAB","region":"SGP","license":"TBSG"},{"name":"Gambia","code":"GMB","region":"SGP","license":"TBSG"},{"name":"Lesotho","code":"LSO","region":"SGP","license":"TBSG"},{"name":"Malawi","code":"MWI","region":"SGP","license":"TBSG"},{"name":"Reunion","code":"REU","region":"SGP","license":"TBSG"},{"name":"Rwanda","code":"RWA","region":"SGP","license":"TBSG"},{"name":"Senegal","code":"SEN","region":"SGP","license":"TBSG"}]},{"name":"North America","children":[{"name":"Aruba","code":"ABW","region":"SGP","license":"TBSG"},{"name":"Barbados","code":"BRB","region":"SGP","license":"TBSG"},{"name":"Canada","code":"CAN","region":"SGP","license":"TBSG"},{"name":"Costa Rica","code":"CRI","region":"SGP","license":"TBSG"},{"name":"Dominica","code":"DMA","region":"SGP","license":"TBSG"},{"name":"El Salvador","code":"SLV","region":"SGP","license":"TBSG"},{"name":"Martinique","code":"MTQ","region":"SGP","license":"TBSG"},{"name":"Montserrat","code":"MSR","region":"SGP","license":"TBSG"},{"name":"Saint Lucia","code":"LCA","region":"SGP","license":"TBSG"}]},{"name":"South America","children":[{"name":"Bolivia","code":"BOL","region":"SGP","license":"TBSG"},{"name":"Chile","code":"CHL","region":"SGP","license":"TBSG"},{"name":"French Guiana","code":"GUF","region":"SGP","license":"TBSG"},{"name":"Suriname","code":"SUR","region":"SGP","license":"TBSG"},{"name":"Uruguay","code":"URY","region":"SGP","license":"TBSG"}]}],
+      lang: ["en_US","zh_CN"]
+      }
+    div
+      .style_topbarExpand__3OC1O
+  // prettier-ignore
+  header.site-header.mobile-mode
+    .primary-nav-invest-backdrop
+    .site-primary-nav-backdrop
+    .container
+      h1.site-primary-brand
+        img.logo(src='https://i.postimg.cc/ZRqBsRj9/robot-icons.png')
+        // SL: https://i.postimg.cc/ZRqBsRj9/robot-icons.png is igoinvest robot logo
+      .site-primary-navbar-container
+        span.site-primary-nav-indicator(style='left: 311px; width: 79.15px;')
+        ul.site-primary-navbar
+          li.nav-item.active
+            a.nav-link(href='/' title='Why Us') *About US
+          li.nav-item.has-children
+            a.nav-link(href='/download' title='Download') *Download
+            a.indicator
+              span.indicator-arrow-right
+            ul.nav-children.nav-children-level-1
+              li.nav-children-item
+                a.nav-link(href='/download#mobile' title='Mobile APP') Mobile APP
+              li.nav-children-item
+                a.nav-link(href='/download#pc' title='Desktop APP') Desktop APP
+          li.nav-item.has-children
+            a.nav-link(href='/promotions' title='Promotions') *Tool 
+            a.indicator
+              span.indicator-arrow-right
+            ul.nav-children.nav-children-level-1
+              li.nav-children-item.has-children
+                a.nav-link(href='/promotions' title='Giveaways') Giveaways
+                a.indicator
+                  span.indicator-arrow-right
+                ul.nav-children.nav-children-level-2
+                  li.nav-children-item
+                    a.nav-link(href='https://www.tigerbrokers.com.sg/be-rewarded-when-you-trade-selected-sgx-listed-futures-with-tiger-brokers' title='Be rewarded when you trade selected SGX Listed Futures') Be rewarded when you trade selected SGX Listed Futures
+                  li.nav-children-item
+                    a.nav-link(href='https://www.tigerbrokers.com.sg/activity/market/2022/welcome-sgp/?template=AC1657782932131XBHazN' title='Welcome Gifts') Welcome Gifts
+                  li.nav-children-item
+                    a.nav-link(href='https://tigerbrokers.com.sg/activity/forapp/invitflow-intl/sgp.html?adcode=AC1657782932131XBHazN-invitflow' title='Referral Promotion') Referral Promotion
+                  li.nav-children-item
+                    a.nav-link(href='https://www.tigerbrokers.com.sg/activity/market/2022/spx' title='Win a Bonus of Up to USD 888 by Trading SPX Options') Win a Bonus of Up to USD 888 by Trading SPX Options
+                  li.nav-children-item
+                    a.nav-link(href='/activity/forapp/corporate-benefits/' title='Corporate Welfare Zone') Corporate Welfare Zone
+              li.nav-children-item.has-children
+                a.nav-link(href='/promotions' title='Special Offers') Special Offers
+                a.indicator
+                  span.indicator-arrow-right
+                ul.nav-children.nav-children-level-2
+                  li.nav-children-item
+                    a.nav-link(href='/activity/market/2021/sgp-free/' title='0 Sales Charges on All Funds') 0 Sales Charges on All Funds
+                  li.nav-children-item
+                    a.nav-link(href='/activity/market/2021/futures-free-month' title='ZERO Commission for Futures Trading') ZERO Commission for Futures Trading
+                  li.nav-children-item
+                    a.nav-link(href='/activity/market/2021/fund-greater-china' title='Plan Your Savings, Invest in China') Plan Your Savings, Invest in China
+              li.nav-children-item
+                a.nav-link(href='/tiger-coins' title='Tiger Coins') Tiger Coins
+              li.nav-children-item
+                a.nav-link(href='https://www.tigerbrokers.com.sg/activity/forapp/reward/redeem.html?lang=en_US' title='Redemption Center') Redemption Center
+          li.nav-item.has-children
+            a.nav-link(href='/help' title='Help') *Pricing
+            a.indicator
+              span.indicator-arrow-right
+            ul.nav-children.nav-children-level-1
+              li.nav-children-item.has-children
+                a.nav-link(href='/help/detail/account-operations' title='Account Operations') Account Operations
+                a.indicator
+                  span.indicator-arrow-right
+                ul.nav-children.nav-children-level-2
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/account-opening' title='How to Open an Account?') How to Open an Account?
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/account-opening-documents' title='Account Opening Documents') Account Opening Documents
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/account-types' title='Account Types Available') Account Types Available
+              li.nav-children-item.has-children
+                a.nav-link(href='/help/detail/transfer-n-pay' title='Transfer & Pay') Transfer &amp; Pay
+                a.indicator
+                  span.indicator-arrow-right
+                ul.nav-children.nav-children-level-2
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/account-funding' title='Account Funding') Account Funding
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/89960074' title='DDA Fast Deposit') DDA Fast Deposit
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/funds-withdrawal' title='Funds Withdrawal') Funds Withdrawal
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/shares-transfer-in' title='Shares Transfer-in') Shares Transfer-in
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/shares-transfer-out' title='Shares Transfer-out') Shares Transfer-out
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/currency-exchange' title='Currency Conversion') Currency Conversion
+              li.nav-children-item.has-children
+                a.nav-link(href='/help/detail/products-n-trading' title='Products & Trading') Products &amp; Trading
+                a.indicator
+                  span.indicator-arrow-right
+                ul.nav-children.nav-children-level-2
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/products-available' title='Products Available') Products Available
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/order-types' title='Order Types') Order Types
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/trading-tules' title='Trading Rules') Trading Rules
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/declaration' title='Declaration') Declaration
+              li.nav-children-item.has-children
+                a.nav-link(href='/help/detail/margin-trading-n-short-selling' title='Margin Trading & Short Selling') Margin Trading &amp; Short Selling
+                a.indicator
+                  span.indicator-arrow-right
+                ul.nav-children.nav-children-level-2
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/margin-n-leverage' title='Margin & Leverage') Margin &amp; Leverage
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/risk-management' title='Risk Management') Risk Management
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/short-selling-risk' title='Short Selling Risk') Short Selling Risk
+              li.nav-children-item.has-children
+                a.nav-link(href='/help/detail/fund-mall' title='Fund Mall') Fund Mall
+                a.indicator
+                  span.indicator-arrow-right
+                ul.nav-children.nav-children-level-2
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/buy-n-sell' title='Buy & Sell') Buy &amp; Sell
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/earnings-n-dividends' title='Earnings & Dividends') Earnings &amp; Dividends
+              li.nav-children-item.has-children
+                a.nav-link(href='/help/detail/statement-n-more' title='Statement') Statement
+                a.indicator
+                  span.indicator-arrow-right
+                ul.nav-children.nav-children-level-2
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/statement' title='Statement') Statement
+                  li.nav-children-item
+                    a.nav-link(href='/help/detail/dividends' title='Dividends') Dividends
+          li.nav-item.has-children
+            a.nav-link(href='https://www.tigerbrokers.com.sg/commissions/fees' title='Pricing') *Investment Principles
+            a.indicator
+              span.indicator-arrow-right
+            ul.nav-children.nav-children-level-1
+              li.nav-children-item.has-children
+                a.nav-link(href='/commissions/fees/stocks_etf' title='Stocks & ETFs') Stocks &amp; ETFs
+                a.indicator
+                  span.indicator-arrow-right
+                ul.nav-children.nav-children-level-2
+                  li.nav-children-item
+                    a.nav-link(href='/commissions/fees/stocks_etf#us_stocks' title='US Stocks & ETFs') US Stocks &amp; ETFs
+                  li.nav-children-item
+                    a.nav-link(href='/commissions/fees/stocks_etf#hk_stocks' title='Hong Kong Stocks') Hong Kong Stocks
+                  li.nav-children-item
+                    a.nav-link(href='/commissions/fees/stocks_etf#singapore_stocks' title='Singapore Stocks, ETFs, REITs & DLCs') Singapore Stocks, ETFs, REITs &amp; DLCs
+                  li.nav-children-item
+                    a.nav-link(href='/commissions/fees/stocks_etf#china_a_shares' title='China A-Shares') China A-Shares
+                  li.nav-children-item
+                    a.nav-link(href='/commissions/fees/stocks_etf#au_stocks' title='Australian Stocks') Australian Stocks
+              li.nav-children-item.has-children
+                a.nav-link(href='/commissions/fees/options_cbbcs' title='Options, Warrants & CBBCs') Options, Warrants &amp; CBBCs
+                a.indicator
+                  span.indicator-arrow-right
+                ul.nav-children.nav-children-level-2
+                  li.nav-children-item
+                    a.nav-link(href='/commissions/fees/options_cbbcs#us_stock' title='US Stock Options') US Stock Options
+                  li.nav-children-item
+                    a.nav-link(href='/commissions/fees/options_cbbcs#hk_Stock' title='Hong Kong Stock Options') Hong Kong Stock Options
+                  li.nav-children-item
+                    a.nav-link(href='commissions/fees/options_cbbcs#warrants_cbbcs' title='Hong Kong Warrants & CBBCs') Hong Kong Warrants &amp; CBBCs
+              li.nav-children-item.has-children
+                a.nav-link(href='/commissions/fees/futures' title='Futures') Futures
+                a.indicator
+                  span.indicator-arrow-right
+                ul.nav-children.nav-children-level-2
+                  li.nav-children-item
+                    a.nav-link(href='/commissions/fees/futures#index_futures' title='Index Futures') Index Futures
+                  li.nav-children-item
+                    a.nav-link(href='/commissions/fees/futures#treasury_futures' title='Treasury Futures') Treasury Futures
+                  li.nav-children-item
+                    a.nav-link(href='/commissions/fees/futures#metal_futures' title='Metal Futures') Metal Futures
+                  li.nav-children-item
+                    a.nav-link(href='/commissions/fees/futures#energy_futures' title='Energy Futures & More') Energy Futures &amp; More
+              li.nav-children-item.has-children
+                a.nav-link(href='/commissions/others_fees/financing_interest_rates' title='Financing Interest Rates') Financing Interest Rates
+                a.indicator
+                  span.indicator-arrow-right
+                ul.nav-children.nav-children-level-2
+                  li.nav-children-item
+                    a.nav-link(href='/commissions/others_fees/financing_interest_rates' title='USD HKD SGD CNH AUD') USD HKD SGD CNH AUD
+              li.nav-children-item
+                a.nav-link(href='/commissions/fees/fund_mall' title='Fund Mall') Fund Mall
+          li.nav-item.has-children
+            a.nav-link(href='/market/fund' title='Products') *Academy 
+            a.indicator
+              span.indicator-arrow-right
+            ul.nav-children.nav-children-level-1
+              li.nav-children-item
+                a.nav-link(href='/market/fund' title='Fund Mall') Fund Mall
+              li.nav-children-item
+                a.nav-link(href='https://www.tigerbrokers.com.sg/market/cash-plus' title='Cash Plus') Cash Plus
+          li.nav-item
+            a.nav-link(href='/institution' title='Institution') *Support
+          li.nav-item.has-children
+            a.nav-link(href='/about/contactus' title='About Us') *About Us
+            a.indicator
+              span.indicator-arrow-right
+            ul.nav-children.nav-children-level-1
+              li.nav-children-item
+                a.nav-link(href='/about' title='Company Profile') Company Profile
+              li.nav-children-item
+                a.nav-link(href='/about/contactus' title='Contact Us') Contact Us
+              li.nav-children-item
+                a.nav-link(href='/about/news' title='News') News
+              li.nav-children-item
+                a.nav-link(href='https://www.linkedin.com/careersite/tigerbrokersingapore' title='Join Us' target='_blank') Join Us
+              li.nav-children-item
+                a.nav-link(href='/about/license' title='Licensing and Regulatory') Licensing and Regulatory
+      .site-navbar-search
+      .site-navbar-search-toggle
+        a.btn.btn-search(href='?autoSearch')
+          svg.tigericon.tigericon-search.icon-search.a-fadeIn(viewbox='0 0 1024 1024' width='48' height='48' fill='currentColor' aria-hidden='true' focusable='false' data-reactroot='')
+            path(d='M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0011.6 0l43.6-43.5a8.2 8.2 0 000-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z')
+          svg.tigericon.tigericon-close.icon-close.a-fadeIn(viewbox='0 0 1024 1024' width='48' height='48' fill='currentColor' aria-hidden='true' focusable='false' data-reactroot='')
+            path(d='M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z')
+      ul.site-navbar-side
+        li.nav-item
+          a.btn.btn-navbar.btn-ghost.position-sticky(href='igoinvest login v1.html' target='blank' data-sensors-trace='{"type":"导航","name":"登录按钮点击","entrance_type":"Header_login"}')
+            | LOGIN
+            // SL: link login page to front page
+        li.nav-item
+          a.btn.btn-navbar.position-sticky(href='/signup' data-sensors-trace='{"type":"导航","name":"注册按钮点击","entrance_type":"Header_signup"}')
+            | SIGN UP
+      button.site-mobile-nav-toggle.btn
+        | Toggle
+        span
+  #container.site-container
+    .site-banner
+      .banner-pc.swiper-container
+        .banner-wrapper.swiper-wrapper
+          .banner-slide.swiper-slide
+            a.banner-link(href='https://www.tigerbrokers.com.sg/activity/market/2022/welcome-sgp/?template=AC1657782932131XBHazN' target='_self')
+              .bg(style='background-image:url(https://i.postimg.cc/vBFw98zV/technical-Analysis.jpg)')
+                .banner-content.container
+                  // SL changed line 500 background image
+          .banner-slide.swiper-slide
+            a.banner-link(href='https://tigerbrokers.com.sg/activity/forapp/invitflow-intl/sgp.html?adcode=AC1657782932131XBHazN-invitflow' target='_self')
+              .bg(style='background-image:url(https://static.tigerbbs.com/399414f0b6bdc8336c2451af9d85acf1)')
+                .banner-content.container
+          .banner-slide.swiper-slide
+            a.banner-link(href='https://www.tigerbrokers.com.sg/be-rewarded-when-you-trade-selected-sgx-listed-futures-with-tiger-brokers' target='_self')
+              .bg(style='background-image:url(https://static.tigerbbs.com/37cab5515b5c3bd1f8f3de9a232fb576)')
+                .banner-content.container
+          .banner-slide.swiper-slide
+            a.banner-link(href='https://www.tigerbrokers.com.sg/activity/market/2022/spx/' target='_self')
+              .bg(style='background-image:url(https://static.tigerbbs.com/24091f2cc61ac8aca5ab552960cba100)')
+                .banner-content.container
+        .swiper-pagination.swiper-pagination-clickable
+          span.swiper-pagination-bullet(tabindex='0' role='button' aria-label='Go to slide 1')
+          span.swiper-pagination-bullet(tabindex='0' role='button' aria-label='Go to slide 2')
+          span.swiper-pagination-bullet(tabindex='0' role='button' aria-label='Go to slide 3')
+          span.swiper-pagination-bullet(tabindex='0' role='button' aria-label='Go to slide 4')
+      .banner-mobile.swiper-container.swiper-container-initialized.swiper-container-horizontal
+        .parallax-bg(data-swiper-parallax='-23%' style='transition-duration: 300ms; transform: translate3d(-9.2%, 0px, 0px);')
+        .banner-wrapper.swiper-wrapper(style='transition-duration: 300ms; transform: translate3d(-1836px, 0px, 0px);')
+          .banner-slide.swiper-slide.swiper-slide-duplicate(data-swiper-slide-index='3' style='width: 918px;')
+            a.banner-link(href='https://www.tigerbrokers.com.sg/activity/market/2022/spx/' target='_self')
+              .bg(style='background-image:url(https://static.tigerbbs.com/debfdecf33c10924a3d37d1f33c86a61)')
+                .banner-content.container
+          .banner-slide.swiper-slide.swiper-slide-prev(data-swiper-slide-index='0' style='width: 918px;')
+            a.banner-link(href='https://www.tigerbrokers.com.sg/activity/market/2022/welcome-sgp/?template=AC1657782932131XBHazN' target='_self')
+              .bg(style='background-image:url(https://static.tigerbbs.com/2622e766cdeb049459ce19bb34005932)')
+                .banner-content.container
+          .banner-slide.swiper-slide.swiper-slide-active(data-swiper-slide-index='1' style='width: 918px;')
+            a.banner-link(href='https://tigerbrokers.com.sg/activity/forapp/invitflow-intl/sgp.html?adcode=AC1657782932131XBHazN-invitflow' target='_self')
+              .bg(style='background-image:url(https://static.tigerbbs.com/fb87d609f7b4b679b2fc6a1fea9fe6bf)')
+                .banner-content.container
+          .banner-slide.swiper-slide.swiper-slide-next(data-swiper-slide-index='2' style='width: 918px;')
+            a.banner-link(href='https://www.tigerbrokers.com.sg/be-rewarded-when-you-trade-selected-sgx-listed-futures-with-tiger-brokers' target='_self')
+              .bg(style='background-image:url(https://static.tigerbbs.com/f23f544dd513e84fbc103e379ed61929)')
+                .banner-content.container
+          .banner-slide.swiper-slide(data-swiper-slide-index='3' style='width: 918px;')
+            a.banner-link(href='https://www.tigerbrokers.com.sg/activity/market/2022/spx/' target='_self')
+              .bg(style='background-image:url(https://static.tigerbbs.com/debfdecf33c10924a3d37d1f33c86a61)')
+                .banner-content.container
+          .banner-slide.swiper-slide.swiper-slide-duplicate.swiper-slide-duplicate-prev(data-swiper-slide-index='0' style='width: 918px;')
+            a.banner-link(href='https://www.tigerbrokers.com.sg/activity/market/2022/welcome-sgp/?template=AC1657782932131XBHazN' target='_self')
+              .bg(style='background-image:url(https://static.tigerbbs.com/2622e766cdeb049459ce19bb34005932)')
+                .banner-content.container
+        .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets
+          span.swiper-pagination-bullet(tabindex='0' role='button' aria-label='Go to slide 1')
+          span.swiper-pagination-bullet.swiper-pagination-bullet-active(tabindex='0' role='button' aria-label='Go to slide 2')
+          span.swiper-pagination-bullet(tabindex='0' role='button' aria-label='Go to slide 3')
+          span.swiper-pagination-bullet(tabindex='0' role='button' aria-label='Go to slide 4')
+        span.swiper-notification(aria-live='assertive' aria-atomic='true')
+    // prettier-ignore
+    .homepage
+      section.homepage-notice.mb-0
+        #swiper-notice.notice-swiper.swiper-container-initialized.swiper-container-vertical
+          .container.notice-title
+            .d-flex.align-items-center
+              img.notice-icon-info.mr-2(src='https://c1.itigergrowth.com/portal5/static/media/icon-info.5d771f8d.png' alt='info')
+              |             * Disclaimer (tba)
+            button.btn.btn-link.notice-close
+              img.w-100(src='https://c1.itigergrowth.com/portal5/static/media/icon-close.dc85ccbe.png' alt='close')
+              | notice-close
+          #notice-swiper-pagination.homepage-swiper-pagination.notice-swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets
+            span.swiper-pagination-item(tabindex='0' role='button' aria-label='Go to slide 1')
+            span.swiper-pagination-item.active(tabindex='0' role='button' aria-label='Go to slide 2')
+            span.swiper-pagination-item(tabindex='0' role='button' aria-label='Go to slide 3')
+          .swiper-wrapper(style='transform: translate3d(0px, -320px, 0px); transition-duration: 0ms;')
+            .swiper-slide.swiper-slide-duplicate.swiper-slide-duplicate-next(data-swiper-slide-index='2' style='height: 160px;')
+              .container
+                p Dear xxx,
+                p  Please provide the contents.
+            .swiper-slide.swiper-slide-prev(data-swiper-slide-index='0' style='height: 160px;')
+              .container
+                p  1) Please provide the contents. &nbsp;
+            .swiper-slide.swiper-slide-active(data-swiper-slide-index='1' style='height: 160px;')
+              .container
+                p
+                  | 2) Please provide the contents. Click to browse the &quot;
+                  a(href='/fraud-awareness' target='_blank' rel='noopener') Notification of Fraudulent Use of Tiger Brokers Brand
+                  | &quot;.
+            .swiper-slide.swiper-slide-next(data-swiper-slide-index='2' style='height: 160px;')
+              .container
+                p Dear XXX,
+                p  3) Please provide the contents.
+            span.swiper-notification(aria-live='assertive' aria-atomic='true')
+      // prettier-ignore
+      div
+      section.homepage-experience.my-0
+        .container.pt-5.pb-4.pt-lg-6.pb-lg-5
+          #experience-swiper.default-swiper.square.swiper-container-initialized.swiper-container-horizontal.a-flyBottomIn(data-animation='a-flyBottomIn')
+            .swiper-wrapper(style='transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);')
+              .swiper-slide.swiper-slide-active(style='width: 330px; margin-right: 30px;')
+                .swiper-slide-block
+                  a.swiper-slide-wrap.about-item(href='/i/accounts?lang=en_US')
+                    .mx-4.mt-4
+                      h3.about-title
+                        | 100% Online
+                        br
+                        | No Min. Deposit
+                        br
+                        | Margin &amp; Cash Trading
+                      p.fs12
+                        | Entirely online process for registration, account opening, and funding. There is no requirement for the deposit amount. Use your Tiger account to trade securities around the world on multiple markets with multiple currencies. Tiger supports both cash and margin accounts.
+                    button.btn.btn-link.btn-go
+              .swiper-slide.swiper-slide-next(style='width: 330px; margin-right: 30px;')
+                .swiper-slide-block
+                  a.swiper-slide-wrap.about-item(href='/about/license')
+                    .mx-4.mt-4
+                      h3.about-title
+                        | Regulated and Secure
+                        br
+                        | Reliable Custodians
+                      p.fs12
+                        | Tiger provides clients with a secure and reliable trading platform. Tiger is regulated by the Monetary Authority of Singapore with DBS Bank, Interactive Brokers, and other financial institutions serving as custodians for clients&apos; funds and assets.
+                    button.btn.btn-link.btn-go
+              .swiper-slide(style='width: 330px; margin-right: 30px;')
+                .swiper-slide-block
+                  a.swiper-slide-wrap.about-item(href='/commissions')
+                    .mx-4.mt-4
+                      h3.about-title
+                        | Maximize Your Profits
+                        br
+                        | No Account Fees
+                        br
+                        | Unlimited T+0 Trades
+                      p.fs12
+                        | Tiger does not charge custody fees, deposit, and withdrawal fees, currency exchange fees, account maintenance fees, inactivity fees, etc. Tiger does not set limits on the number of trades.
+                    button.btn.btn-link.btn-go
+            #experience-about-swiper-pagination.d-lg-none.homepage-swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets
+              span.swiper-pagination-item.active(tabindex='0' role='button' aria-label='Go to slide 1')
+              span.swiper-pagination-item(tabindex='0' role='button' aria-label='Go to slide 2')
+            span.swiper-notification(aria-live='assertive' aria-atomic='true')
+          .overflow-hidden
+            a.btn.tiger-btn.mt-5.aninode(data-animation='a-flyBottomIn' href='/i/accounts?lang=en_US') OPEN ACCOUNT
+      // prettier-ignore
+      section.container.py-5.homepage-platform
+        .overflow-hidden
+          h2.aninode(data-animation='a-flyBottomIn')
+            | One-Stop Trading Platform - A Rich Range of Securities
+        .mt-4.mt-lg-6
+          .overflow-hidden
+            .platform-item.aninode.border-bottom-0(data-animation='a-flyBottomIn')
+              img.mr-3.mt-2.mt-lg-0(src='https://c1.itigergrowth.com/portal5/static/media/icon-check-full.821e1531.png' alt='check')
+              .flex-1.d-flex.flex-column.flex-lg-row.justify-content-lg-between
+                .font-weight-bold.fs-2.text-start US/HK/SG/CN/AU stocks
+                .d-flex.align-items-center.text-end Real-time quotes showing market trends and insights
+          .overflow-hidden
+            .platform-item.aninode.border-bottom-0(data-animation='a-flyBottomIn')
+              img.mr-3.mt-2.mt-lg-0(src='https://c1.itigergrowth.com/portal5/static/media/icon-check-full.821e1531.png' alt='check')
+              .flex-1.d-flex.flex-column.flex-lg-row.justify-content-lg-between
+                .font-weight-bold.fs-2.text-start Easily Trade Options and More
+                .d-flex.align-items-center.text-end Popular products trading at your fingertips
+          .overflow-hidden
+            .platform-item.aninode.border-bottom-0(data-animation='a-flyBottomIn')
+              img.mr-3.mt-2.mt-lg-0(src='https://c1.itigergrowth.com/portal5/static/media/icon-check-full.821e1531.png' alt='check')
+              .flex-1.d-flex.flex-column.flex-lg-row.justify-content-lg-between
+                .font-weight-bold.fs-2.text-start US stock ETFs / SG stock ETFs and REITs
+                .d-flex.align-items-center.text-end Diversify your portfolio globally
+          .overflow-hidden
+            .platform-item.aninode(data-animation='a-flyBottomIn')
+              img.mr-3.mt-2.mt-lg-0(src='https://c1.itigergrowth.com/portal5/static/media/icon-check-full.821e1531.png' alt='check')
+              .flex-1.d-flex.flex-column.flex-lg-row.justify-content-lg-between
+                .font-weight-bold.fs-2.text-start Index/metal/treasury/energy futures &amp; more
+                .d-flex.align-items-center.text-end More Securities Coming Soon!
+          .fs12
+        .overflow-hidden
+          .platform-video.mt-lg-6.mt-5.aninode(data-animation='a-flyBottomIn')
+            video#brand-video(autoplay='' loop='' muted='' playsinline='' webkit-playsinline='' width='100%')
+              source(src='https://1254107296.vod2.myqcloud.com/27e1f7ecvodtransgzp1254107296/20f26de85285890806563741051/v.f100020.mp4' type='video/mp4')
+            p.video-desc.fs-2
+              | Tiger Trade Features a Demo Account - Practice &amp; Test Your Strategies
+      // prettier-ignore
+      div
+      section.homepage-brand
+        .container.py-5
+          .overflow-hidden
+            h2.text-white.aninode(data-animation='a-flyBottomIn')
+              | Seamless Access to Global Markets with Low Commissions
+          .row.mt-5
+            .col-lg-6.d-lg-flex.flex-lg-column.justify-content-lg-center.max-md-px-0
+              .overflow-hidden
+                p.fs-2.font-weight-bold.aninode(data-animation='a-flyBottomIn')
+                  | Tiger Brokers - the ideal choice for both new investors and seasoned traders
+              .overflow-hidden
+                // prettier-ignore
+                p.aninode(data-animation='a-flyBottomIn')
+                  | Tiger&apos;s platform is convenient, easy to use, and provides a rich range of securities. Tiger&apos;s commissions are among the lowest in the industry.
+            .col-lg-6
+              video.aninode(width='100%' muted='' playsinline='' webkit-playsinline='' preload='auto')
+                source(src='https://1254107296.vod2.myqcloud.com/27e1f7ecvodtransgzp1254107296/11b6408b5285890807478206700/v.f100810.mp4')
+          .d-flex.justify-content-between.mt-lg-2.mt-6.max-md-px-0
+            p Tiger Charges Low, Maximizing Your Profit
+            .brand-arrow
+              button#sg-brand-swiper-prev.btn.btn-link.p-0.left(tabindex='0' role='button' aria-label='Previous slide' aria-disabled='false')
+              button#sg-brand-swiper-next.btn.btn-link.p-0.right.active(tabindex='0' role='button' aria-label='Next slide' aria-disabled='false')
+          .overflow-hidden
+            #sg-brand-swiper.sg-brand-swiper.swiper-container-initialized.swiper-container-horizontal
+              .swiper-wrapper(style='transform: translate3d(-720px, 0px, 0px); transition-duration: 0ms;')
+                .swiper-slide(style='width: 210px; margin-right: 30px;')
+                  img.brand-icon(src='https://c1.itigergrowth.com/portal5/static/media/icon-region-us.0c18a1a2.png' alt='US Stocks & ETFs')
+                  p.fs18.mt-4 US Stocks &amp; ETFs
+                  p.fs-3.text-primary
+                    | Commission
+                    br
+                    | From 0.005 USD / Share
+                .swiper-slide(style='width: 210px; margin-right: 30px;')
+                  img.brand-icon(src='https://c1.itigergrowth.com/portal5/static/media/icon-region-hk.98002295.png' alt='Hong Kong Stocks')
+                  p.fs18.mt-4 Hong Kong Stocks
+                  p.fs-3.text-primary
+                    | Commission
+                    br
+                    | From 0.03% * Trade Value
+                .swiper-slide.swiper-slide-prev(style='width: 210px; margin-right: 30px;')
+                  img.brand-icon(src='https://c1.itigergrowth.com/portal5/static/media/icon-region-sg.fd47bdc7.png' alt='Singapore Stocks, ETFs, REITs & DLCs')
+                  p.fs18.mt-4 Singapore Stocks, ETFs, REITs &amp; DLCs
+                  p.fs-3.text-primary
+                    | Commission
+                    br
+                    | From 0.04% * Trade Value
+                .swiper-slide.swiper-slide-active(style='width: 210px; margin-right: 30px;')
+                  img.brand-icon(src='https://c1.itigergrowth.com/portal5/static/media/icon-region-cn.9cf04663.png' alt='China A-shares')
+                  p.fs18.mt-4 China A-shares
+                  p.fs-3.text-primary
+                    | Commission
+                    br
+                    | From 0.03% * Trade Value
+                .swiper-slide.swiper-slide-next(style='width: 210px; margin-right: 30px;')
+                  img.brand-icon(src='https://c1.itigergrowth.com/portal5/static/media/icon-region-au.8091269a.png' alt='Australian Stocks')
+                  p.fs18.mt-4 Australian Stocks
+                  p.fs-3.text-primary
+                    | Commission
+                    br
+                    | From 0.05% * Trade Value
+                .swiper-slide(style='width: 210px; margin-right: 30px;')
+                  img.brand-icon(src='https://c1.itigergrowth.com/portal5/static/media/icon-region-us.0c18a1a2.png' alt='US Stock Options')
+                  p.fs18.mt-4 US Stock Options
+                  p.fs-3.text-primary
+                    | Commission
+                    br
+                    | From 0.65 USD / Contract
+                .swiper-slide(style='width: 210px; margin-right: 30px;')
+                  img.brand-icon(src='https://c1.itigergrowth.com/portal5/static/media/icon-region-hk.98002295.png' alt='Hong Kong Stock Options')
+                  p.fs18.mt-4 Hong Kong Stock Options
+                  p.fs-3.text-primary
+                    | Commission
+                    br
+                    | From 0.2% * Trade Value
+                .swiper-slide(style='width: 210px; margin-right: 30px;')
+                  img.brand-icon(src='https://c1.itigergrowth.com/portal5/static/media/icon-region-hk.98002295.png' alt='Hong Kong Warrants & CBBCs')
+                  p.fs18.mt-4 Hong Kong Warrants &amp; CBBCs
+                  p.fs-3.text-primary
+                    | Commission
+                    br
+                    | 0.03% * Trade Value
+                .swiper-slide(style='width: 210px; margin-right: 30px;')
+                  img.brand-icon(src='https://c1.itigergrowth.com/portal5/static/media/icon-stock-other.d21f0262.png' alt='Futures')
+                  p.fs18.mt-4 Futures
+                  p.fs-3.text-primary
+                    | Commission
+                    br
+                    | From $0 / One-way Contract
+                .swiper-slide(style='width: 210px; margin-right: 30px;')
+                  img.brand-icon(src='https://c1.itigergrowth.com/portal5/static/media/icon-fund-mall.c486a8ac.png' alt='Fund Mall')
+                  p.fs18.mt-4 Fund Mall
+                  p.fs-3.text-primary
+                    | 0 Platform Fees
+                    br
+                    | 0 Sales Charge
+              #sg-brand-swiper-pagination.d-lg-none.homepage-swiper-pagination.white.swiper-pagination-clickable.swiper-pagination-bullets
+                span.swiper-pagination-item(tabindex='0' role='button' aria-label='Go to slide 1')
+                span.swiper-pagination-item(tabindex='0' role='button' aria-label='Go to slide 2')
+                span.swiper-pagination-item(tabindex='0' role='button' aria-label='Go to slide 3')
+                span.swiper-pagination-item.active(tabindex='0' role='button' aria-label='Go to slide 4')
+                span.swiper-pagination-item(tabindex='0' role='button' aria-label='Go to slide 5')
+                span.swiper-pagination-item(tabindex='0' role='button' aria-label='Go to slide 6')
+                span.swiper-pagination-item(tabindex='0' role='button' aria-label='Go to slide 7')
+                span.swiper-pagination-item(tabindex='0' role='button' aria-label='Go to slide 8')
+              span.swiper-notification(aria-live='assertive' aria-atomic='true')
+          .overflow-hidden.mt-3
+            a.btn.tiger-btn-white.aninode(data-animation='a-flyBottomIn' href='/commissions/fees/stocks_etf') Learn More
+        canvas#brand-mesh.d-none.d-lg-block.d-xl-block.brand-wave(height='320' tabindex='0' style='height: 320px; width: 935px;' width='935')
+      // prettier-ignore
+      div
+      section#homepage-globe.homepage-globe
+        .container.pt-5.pb-4.pt-lg-6.pb-lg-5
+          .overflow-hidden
+            h2.aninode(data-animation='a-flyBottomIn') One Account for Global Markets
+          .overflow-hidden
+            p.my-4.homepage-globe-desc.aninode(data-animation='a-flyBottomIn')
+              | Tiger&apos;s platform enables investors to access stocks, ETFs, options, warrants, CBBCs, REITs, futures and funds, on multiple markets including the United States, Hong Kong, Singapore, China (HKEX northbound), and Australia.
+          .overflow-hidden
+            #homepage-globe-earth.m-auto.globe-wrap.aninode(data-animation='a-flyBottomIn')
+              canvas(width='587' height='587' style='display: block; width: 587px; height: 587px;')
+          .overflow-hidden
+            ul.globe-nav.list-unstyled.fs-2.aninode(data-animation='a-flyBottomIn')
+              li.globe-item.active(data-flag='us')
+                | United States
+              li.globe-item(data-flag='hk')
+                | Hong Kong
+              li.globe-item(data-flag='sg')
+                | Singapore
+              li.globe-item(data-flag='cn')
+                | China
+              li.globe-item(data-flag='au')
+                | Australia
+          .overflow-hidden
+            .globe-modal.aninode(data-animation='a-flyBottomIn')
+              .border-left.p-3.modal-item.stock-us(style='display: block;')
+                h3.m-0 United States
+                p.mb-4 Trading Hours (Singapore Time)
+                h4.fs-2 Daylight Savings Time 
+                p 9:30 pm - 4 am
+                h4.fs-2 Standard Time 
+                p 10:30 pm - 5 am
+                p.mb-2 New York Stock Exchange 
+                p.mb-2 Nasdaq Exchange
+                p.mb-2 American Stock Exchange (AMEX)
+                p.mb-2 Chicago Board of Trade (CBOT), etc.
+              .border-left.p-3.modal-item.stock-hk
+                h3.m-0 Hong Kong
+                p.mb-4 Trading Hours (Singapore Time)
+                p.fs-2 9:30 am - 12 pm
+                p.mb-4.fs-2 1 pm - 4 pm
+                p.mb-2 Hong Kong Exchanges and Clearing (HKEX)
+              .border-left.p-3.modal-item.stock-sg
+                h3.m-0 Singapore 
+                p.mb-4 Trading Hours (Singapore Time)
+                p.fs-2 9 am - 12 pm
+                p.mb-4.fs-2 1 pm - 5 pm
+                p.mb-2 Singapore Exchange (SGX)
+              .border-left.p-3.modal-item.stock-cn
+                h3.m-0 China 
+                p.mb-4 Trading Hours (Singapore Time)
+                p.fs-2 9:30 am - 11:30 am
+                p.mb-4.fs-2 1 pm - 3 pm
+                p.mb-2
+                  | Hong Kong Exchanges and Clearing (HKEX)
+                  | (Shanghai-Hong Kong Stock Connect
+                  | Shenzhen-Hong Kong Stock Connect)
+              .border-left.p-3.modal-item.stock-au
+                h3.m-0 Australia 
+                p.mb-4 Trading Hours (Singapore Time)
+                h4.fs-2 Daylight Savings Time 
+                p.fs-2 7 am - 1 pm
+                h4.fs-2 Standard Time 
+                p.fs-2.mb-4 8 am - 2pm
+                p.mb-2 Australian Securities Exchange (ASX)
+      section.homepage-fund-safety
+        .container.py-5
+          .overflow-hidden
+            h2.aninode(data-animation='a-flyBottomIn') Safety of Assets and Funds
+          .list-wrap.mt-5
+            .row.h-100.aninode(data-animation='a-flyBottomIn')
+              .col-lg-6.d-flex.flex-column.max-md-px-0
+                .border-top.safety-item
+                  .d-flex.justify-content-between.mb-3
+                    img(src='https://c1.itigergrowth.com/portal5/static/media/icon-safety-black.6906092d.png' alt='safety')
+                    button.btn.btn-link.p-0.border-0.btn-more
+                  h3.m-0 Licenced by MAS
+                  // prettier-ignore
+                  p.m-0.desc.mt-3
+                    | Tiger Brokers holds a Capital Markets Services Licence under the Securities and Futures Act 2001 by the Monetary Authority of Singapore (MAS) to conduct regulated activities in Securities, Collective Investment Schemes and Exchange-traded Derivatives Contracts.
+                .border-top.border-bottom.safety-item
+                  .d-flex.justify-content-between.mb-3
+                    img(src='https://c1.itigergrowth.com/portal5/static/media/icon-chart.6307df35.png' alt='chart')
+                    button.btn.btn-link.p-0.border-0.btn-more
+                  h3.m-0 Funds Security
+                  // prettier-ignore
+                  p.m-0.desc.mt-3
+                    | Client funds and securities are kept in a segregated custodian account to ensure they do not commingle with other accounts. Tiger Brokers performs due diligence on our counterparties and ensures that adequate controls are in place to monitor client funds on an ongoing basis.
+              .col-lg-6.d-flex.flex-column.max-md-px-0
+                .border-top.safety-item
+                  .d-flex.justify-content-between.mb-3
+                    img(src='https://c1.itigergrowth.com/portal5/static/media/icon-signet.424d8593.png' alt='signet')
+                    button.btn.btn-link.p-0.border-0.btn-more
+                  h3.m-0 2-FA Security Feature
+                  p.m-0.desc.mt-3
+                    // prettier-ignore
+                    | Tiger Key is a security APP developed by Tiger Brokers to protect clients&apos; trading security further. When 2-factor authentication is enabled, the client needs to enter the one-time password generated by the Tiger Key APP in addition to the login/trading password when logging in/trading. Both passwords need to be verified before the client enters the Tiger Trade APP or the order page. Clients may choose whether to enable Tiger Key or not according to their own needs. To ensure security, we recommend enabling 2-factor authentication.
+                .border-top.border-bottom.safety-item
+                  .d-flex.justify-content-between.mb-3
+                    img(src='https://c1.itigergrowth.com/portal5/static/media/icon-bell.0b776e4d.png' alt='bell')
+                    button.btn.btn-link.p-0.border-0.btn-more
+                  h3.m-0 Deposit and Withdrawal Notification
+                  // prettier-ignore
+                  p.m-0.desc.mt-3
+                    | You&rsquo;ll also receive email notifications for your records for every transfer and withdrawal. For added security, any suspicious transactions will be automatically flagged for further investigation.
+      // prettier-ignore
+      div
+      section#homepage-scroll.homepage-scroll.aninode
+        .hp-scroll-bg(style='position: absolute; top: 0px;') TIGER TRADE
+        .container.d-none.d-lg-block
+          .row.justify-content-end
+            .hp-scroll-illu
+              .hp-illu-item
+                .position-relative.w-100.text-center
+                  .hp-illu-bg
+                  img.hp-illu-img(src='https://c1.itigergrowth.com/portal5/static/media/thumbnail-default.114b1dce.jpg' data-img='https://c1.itigergrowth.com/portal5/static/media/scroll-market-en.51ff4461.png' alt='Complimentary Real-time Stock Quotes')
+              .hp-illu-item
+                .position-relative.w-100.text-center
+                  .hp-illu-bg
+                  img.hp-illu-img(src='https://c1.itigergrowth.com/portal5/static/media/thumbnail-default.114b1dce.jpg' data-img='https://c1.itigergrowth.com/portal5/static/media/scroll-faster-en.d02532f6.gif' alt='A One-Stop Platform for Trading & Financial Information')
+              .hp-illu-item
+                .position-relative.w-100.text-center
+                  .hp-illu-bg
+                  img.hp-illu-img(src='https://c1.itigergrowth.com/portal5/static/media/thumbnail-default.114b1dce.jpg' data-img='https://c1.itigergrowth.com/portal5/static/media/scroll-auxiliary.d546c091.gif' alt='Multiple Trading Features')
+        #homepage-scroll-wrap.container(style='position: relative; top: 0px;')
+          .row
+            .hp-scroll-wrap
+              .w-100
+                h2.hp-scroll-title(data-animation='a-flyBottomIn') Trading Platform and Technology
+                .hp-scroll-list
+                  .hp-scroll-list-item.active
+                    .overflow-hidden
+                      h3.mb-md-5.mb-3.font-weight-bold.aninode(data-animation='a-flyBottomIn')
+                        | Complimentary Real-time Stock Quotes
+                    .overflow-hidden
+                      p.mb-0.aninode(data-animation='a-flyBottomIn')
+                        | Get the latest updates and stay on top of your investments with our free streaming market data. Tiger&apos;s market data provides investors with a more in-depth ability to analyze prices and understand trends.
+                  .hp-scroll-list-item
+                    .overflow-hidden
+                      h3.mb-md-5.mb-3.font-weight-bold.aninode(data-animation='a-flyBottomIn')
+                        | A One-Stop Platform for Trading &amp; Financial Information
+                    .overflow-hidden
+                      p.mb-0.aninode(data-animation='a-flyBottomIn')
+                        | Gain access to a comprehensive range of financial information on company stocks, global news, an economic calendar and much more.
+                  .hp-scroll-list-item
+                    .overflow-hidden
+                      h3.mb-md-5.mb-3.font-weight-bold.aninode(data-animation='a-flyBottomIn')
+                        | Multiple Trading Features
+                    .overflow-hidden
+                      p.mb-0.aninode(data-animation='a-flyBottomIn')
+                        | Gain access to multiple trading features such as one-click trading, profit and loss analysis, stock options trading, in-depth analytics, screeners and candlestick charts.
+                .overflow-hidden
+                  a.btn.tiger-btn(href='/download' data-animation='a-flyBottomIn') Download Now 
+                br
+                .hp-scroll-download.aninode(data-animation='a-flyBottomIn')
+                  a.tiger-icon.apple.dl-ios(href='https://da.tigerfintech.com/r/m' target='_blank' data-app-ios-link='')
+                  a.tiger-icon.android.dl-android(href='https://da.tigerfintech.com/r/u' data-app-android-link='' target='_blank')
+                  a.tiger-icon.appstore.dl-mac(href='https://up.play-analytics.com/app/upgrade/web/latest?region=SGP&lang=en_US&deviceId=web-ed630487-fa33-4ac0-ba01-1eee043&appVer=0&platform=darwin&appName=TigerTrade' target='_blank' data-app-mac-link='')
+                  a.tiger-icon.windows.dl-windows(href='https://up.play-analytics.com/app/upgrade/web/latest?region=SGP&lang=en_US&deviceId=web-ed630487-fa33-4ac0-ba01-1eee043&appVer=0&platform=win32&appName=TigerTrade' data-app-windows-link='' target='_blank')
+      // prettier-ignore
+      section.homepage-contact
+        .container.py-5.d-lg-flex.align-items-center.justify-content-between
+          h2.title
+            | Follow Tiger to get the latest updates~
+          ul.p-0.list-unstyled.m-0.d-flex.mt-5.mt-lg-0
+            li.list-item
+              a.stretched-link(href='    https://twitter.com/TigerBrokers_SG\
+              ' title='twitter')
+                img.icon(src='https://c1.itigergrowth.com/portal5/static/media/icon-twitter.374e107d.png' title='twitter' alt='twitter')
+                img.icon.active(src='https://c1.itigergrowth.com/portal5/static/media/icon-twitter-active.304b7576.png' title='twitter' alt='twitter')
+            li.list-item
+              a.stretched-link(href='    https://www.youtube.com/channel/UCV9o1jW6brfQJepdpuVU2Lw\
+              ' title='youtube')
+                img.icon(src='https://c1.itigergrowth.com/portal5/static/media/icon-youtube.a6175674.png' title='youtube' alt='youtube')
+                img.icon.active(src='https://c1.itigergrowth.com/portal5/static/media/icon-youtube-active.93c67b2c.png' title='youtube' alt='youtube')
+            li.list-item
+              a.stretched-link(href='    https://www.facebook.com/tigerbrokerssg\
+              ' title='facebook')
+                img.icon(src='https://c1.itigergrowth.com/portal5/static/media/icon-facebook.9e8d6b57.png' title='facebook' alt='facebook')
+                img.icon.active(src='https://c1.itigergrowth.com/portal5/static/media/icon-facebook-active.a5613fe9.png' title='facebook' alt='facebook')
+            li.list-item
+              a.stretched-link(href='    https://www.linkedin.com/company/tigerbrokerssg/\
+              ' title='linkedin')
+                img.icon(src='https://c1.itigergrowth.com/portal5/static/media/icon-linkedin.da35e1af.png' title='linkedin' alt='linkedin')
+                img.icon.active(src='https://c1.itigergrowth.com/portal5/static/media/icon-linkedin-active.3d72fd4a.png' title='linkedin' alt='linkedin')
+      // prettier-ignore
+      section.trade-guide.aninode
+        .container.py-5.h-100.d-flex.flex-column.justify-content-lg-center
+          .d-flex.align-items-center
+            img.mr-4(data-img='https://c1.itigergrowth.com/portal5/static/media/icon-smile.314e547d.png' alt='smile')
+            h2.text-primary.m-0
+              | Welcome Gift for Tiger Traders &amp; Referral Promotions
+          p.desc.mt-4
+            | Up to 200 SGD + Commission free trading + Free Level 2 Data for U.S. stocks
+          #trade-guide-wrap.form-wrap.mt-4
+            form.fast-signup-component.hide-error.fs-theme-flat(novalidate='')
+              .is-invalid.is-pristine.is-untouched.is-unfocused.form-group
+                .input-group
+                  .telcode-component.custom-select
+                    span.d-block.text-truncate +65
+                    .trigger(title='Please select your region. ') select
+                  input.form-control(placeholder='Enter your phone number' autocomplete='phone' name='username' value='')
+              .verifycode-component.is-invalid.is-pristine.is-untouched.is-unfocused.form-group
+                .input-wrapper
+                  input.form-control(maxlength='6' name='verify_code' placeholder='SMS verification code ' value='')
+                  button.btn.btn-link(type='button' disabled='') Get Code
+              button.mt-4.tiger-btn-white.btn.btn-light(type='submit' style='position: relative; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);')
+                | Sign Up
+                canvas.water-wave-canvas
+  // prettier-ignore
+  footer.site-footer
+    .site-footer-download-bar
+      .container
+        .bar-item
+          a.site-logo-white.bar-logo(href='/' title='Tiger Trade') Tiger Trade
+          .d-flex
+            a.bottom-bar-btn.white.mr-2(href='/login?next=%2Faccount%2Fintro' data-sensors-trace='{"type":"页面下载条","name":"登录按钮点击","entrance_type":"Header_login"}')
+              | LOGIN
+            a.bottom-bar-btn(href='/signup' data-sensors-trace='{"type":"页面下载条","name":"注册按钮点击","entrance_type":"Header_signup"}')
+              | SIGN UP
+        .bar-item
+          .item-body
+            span.mr-3.opacity-40 Mobile APP
+            a.bottom-bar-btn.mr-2.footer-dl-ios(target='_blank' href='https://da.tigerfintech.com/r/m' data-app-ios-link='')
+              .tiger-icon.icon-white.apple.icon-sm.mr-1
+              |                     APP STORE
+            a.bottom-bar-btn.mr-4.footer-dl-android(target='_blank' data-app-android-link='' href='https://da.tigerfintech.com/r/u')
+              .tiger-icon.icon-white.google.icon-sm.mr-1
+              |                     GOOGLE PLAY
+          .item-body
+            span.mr-3.opacity-40 Desktop APP
+            a.btn.bottom-bar-btn.mr-2.footer-dl-mac(target='_blank' href='https://up.play-analytics.com/app/upgrade/web/latest?region=SGP&lang=en_US&deviceId=web-ed630487-fa33-4ac0-ba01-1eee043&appVer=0&platform=darwin&appName=TigerTrade' data-app-mac-link='')
+              .tiger-icon.icon-white.apple.icon-sm.mr-1
+              |                     Mac
+            a.btn.bottom-bar-btn.footer-dl-win(target='_blank' href='https://up.play-analytics.com/app/upgrade/web/latest?region=SGP&lang=en_US&deviceId=web-ed630487-fa33-4ac0-ba01-1eee043&appVer=0&platform=win32&appName=TigerTrade' data-app-windows-link='')
+              .tiger-icon.icon-white.windows.icon-sm.mr-1
+              |                     Windows
+    .site-footer-nav
+      .container
+        .row
+          .col-lg-9.footer-links
+            .row
+              .col.col-12.col-sm-6.col-lg-6.pr-lg-5.my-3
+                h4.group-title.mb-lg-5.mb-sm-3 Agreements and Declarations
+                .row.row-cols-2
+                  .nav-item
+                    a.nav-link(href='/info/terms-n-conditions' title='Terms & Conditions' target='_self')
+                      | Terms &amp; Conditions
+                  .nav-item
+                    a.nav-link(href='/info/disclaimer' title='Disclaimer' target='_self')
+                      | Disclaimer
+                  .nav-item
+                    a.nav-link(href='/agreement/SGP-SG_risk_disclosure?&skin=2' title='Risk Disclosure' target='_self')
+                      | Risk Disclosure
+                  .nav-item
+                    a.nav-link(href='/agreement/sg_1?lang=en_US&skin=2' title='Client Agreement' target='_self')
+                      | Client Agreement
+                  .nav-item
+                    a.nav-link(href='/agreement/TBSG-OTC?lang=en_US' title='OTC Risk Disclosure' target='_self')
+                      | OTC Risk Disclosure
+                  .nav-item
+                    a.nav-link(href='/info/best-execution-policy' title='Best Execution Policy' target='_self')
+                      | Best Execution Policy
+                  .nav-item
+                    a.nav-link(href='/agreement/TBSG-BTC-FUT?&skin=2' title='PTDs Risk Disclosure' target='_self')
+                      | PTDs Risk Disclosure
+              .col.col-12.col-sm-6.col-lg-3.my-3
+                h4.group-title.mb-lg-5.mb-sm-3 Privacy &amp; Security
+                .row.row-cols-1
+                  .nav-item
+                    a.nav-link(href='/security-n-custody' title='Security & Custody' target='_self')
+                      | Security &amp; Custody
+                  .nav-item
+                    a.nav-link(href='/agreement/sgpolicy?skin=2' title='Privacy Policy' target='_self')
+                      | Privacy Policy
+                  .nav-item
+                    a.nav-link(href='/tiger-token' title='Tiger Token' target='_self')
+                      | Tiger Token
+                  .nav-item
+                    a.nav-link(href='/fraud-awareness' title='Fraud Awareness' target='_self')
+                      | Fraud Awareness
+          .col-lg-3.service-contact
+            p
+              span.contact-us Contact Us
+              br
+              |                         Call Service:
+              br
+              |                         Weekdays 08:30am-18:30pm 
+              br
+              |                         Online Chat Service: 
+              br
+              |                         Weekdays 08:30am - 05:00am (Next day)
+            .telphone
+              a.nav-link(href='tel:+65 6331 2277' title='+65 6331 2277') +65 6331 2277
+            .whatsapp
+              a.nav-link(title='https://api.whatsapp.com/send?phone=6563312277 ' href='https://api.whatsapp.com/send?phone=6563312277 ' target='_blank') WhatsApp +65 6331 2277
+            .service-email
+              a.nav-link(title='service@tigerbrokers.com.sg' href='mailto:service@tigerbrokers.com.sg') service@tigerbrokers.com.sg
+    .site-footer-entities.py-5
+      .container
+        h3 Regulated Entities
+        div
+          .row.text-justify
+            .col-md-6.pr-lg-5
+              h4
+                | US TIGER SECURITIES, INC.
+              .entity
+                p
+                  span(style='font-size: 12px;')
+                    | US Tiger Securities, Inc. is a broker-dealer registered with the U.S. Securities and Exchange Commission (SEC) (No.: 8-65324), member of the Financial Industry Regulatory Authority (FINRA) (CRD: 120583), member of the Securities Investor Protection Corporation (SIPC), and regulated by FINRA and SEC.
+              h4
+                | WEALTHN LLC
+              .entity
+                p(style='text-align: left;')
+                  span(style='font-size: 12px;')
+                    | Wealthn LLC is a registered investment advisor with the SEC (No.: 
+                    a(href='https://adviserinfo.sec.gov/firm/summary/285915' target='_blank' rel='noopener') 801-114105
+                    | ) and regulated by the SEC.
+              h4
+                | TIGER BROKERS (AU) PTY LIMITED
+              .entity
+                p
+                  span(style='font-size: 12px;')
+                    | Tiger Brokers (AU) Pty Limited, ABN 12 007 268 386, is licensed and regulated by Australian Securities and Investment Commission (ASIC), Australian Financial Services Licence no. 300767 (AFSL).
+              h4
+                | TIGER BROKERS (HK) GLOBAL LIMITED
+              .entity
+                p
+                  span(style='font-size: 12px;')
+                    | Tiger Brokers (HK) Global Limited (CE Reference: BMU940) is licensed by Hong Kong Securities and Futures Commission and is authorized to carry Type I (Dealing in Securities) and Type II (Dealing in Futures Contracts) regulated activities in Hong Kong.
+            .col-md-6.pr-lg-5
+              h4
+                | TRADEUP SECURITIES, INC.
+              .entity
+                p
+                  span(style='font-size: 12px;')
+                    | TradeUP Securities, Inc. is a licensed entity registered with the SEC (No.: 8-36754), member of the FINRA (CRD: 18483), member of the SIPC, member of the Depository Trust Company (DTC) and the National Securities Clearing Corporation (NSCC), and regulated by FINRA and SEC.
+              h4
+                | TIGER BROKERS (SINGAPORE) PTE. LTD.
+              .entity
+                p
+                  span(style='font-size: 12px;')
+                    | Tiger Brokers (Singapore) Pte. Ltd. (Reg. No. 201810449W) is licensed and regulated by the Monetary Authority of Singapore and is authorised to operate in Singapore and for avoidance of doubt, is not authorised to operate in any other country. Tiger Brokers (Singapore) Pte. Ltd. does not solicit investors or market services in other jurisdictions such as China, Malaysia, and Vietnam. The content and materials published on this website is for information only and should not be regarded shall not be deemed as an offer, invitation, or solicitation, recommendation or advice to buy, sell, subscribe or dispose of any investment products, financial instruments or other financial services.
+              h4
+                | TIGER FINTECH (NZ) LIMITED (TFNZ)
+              .entity
+                p
+                  span(style='font-size: 12px;')
+                    | Tiger Fintech (NZ) Limited (NZCN: 8187510) is a client money and property service provider under the Financial Markets Conduct Act 2013. TFNZ complies with the custodian obligations under the Financial Markets Conduct Regulations 2014, including the appointment of an independent auditor to undertake a statutory client funds assurance report each year, a copy of which is provided to the NZ Financial Markets Authority.
+                div(data-zone-id='xr1051k6npoaqnc9rr3njztwsrm1dv7h791xc1p13eo7l3h8fc7fc3mc0ovqrhrai3gh0n' data-line-index='0') &nbsp;
+              h4
+                | TIGER BROKERS (NZ) LIMITED (TBNZ)
+              .entity
+                p
+                  span(style='font-size: 12px;')
+                    | Tiger Brokers (NZ) Limited (NZCN: 5838590) is a client money and property service provider under the Financial Markets Conduct Act 2013. TBNZ complies with the custodian obligations under the Financial Markets Conduct Regulations 2014, including the appointment of an independent auditor to undertake a statutory client funds assurance report each year, a copy of which is provided to the NZ Financial Markets Authority.
+        p.mt-2
+          | Copyright &copy; Tiger Brokers (Singapore) Pte. Ltd. 
+          a(href='https://www.uen.gov.sg/') UEN: 201810449W
+script(crossorigin='anonymous' src='https://c1.itigergrowth.com/portal5/static/js/runtime.075ed1e4.js' type='text/javascript')
+script(crossorigin='anonymous' src='https://c1.itigergrowth.com/portal5/static/js/i18n.a282deac.js' type='text/javascript')
+script(crossorigin='anonymous' src='https://c1.itigergrowth.com/portal5/static/js/vendor.000d8a6f.js' type='text/javascript')
+.dlapp-open-in-browser
+  p
+    | If the download button clicks without skipping, click on the top right menu and select &quot;Open in Browser.&quot;
+script(crossorigin='anonymous' src='https://c1.itigergrowth.com/portal5/static/js/common.7e019b2e.js' type='text/javascript')
+div
+div
+  .site-service-nav.text-center(direction='v')
+    ul.service-ul.list-unstyled.mb-0
+      li#service-chat.service-li
+        a.service-chat.d-block.text-reset(href='#chat-service' title='Consult now ' data-trace='service-nav,click,chat') Consult now 
+      li.service-li
+        a.service-download.text-reset(title='Download APP' href='/download' data-trace='service-nav,click,download') Download APP
+        .service-qrcode
+          .qrcode-img.download-mobile-app-qrcode(style='background-image: url("data:image/png;base64,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");')
+          span.d-block.mb-2.px-2 Scan the QR code to download APP. 
+script(crossorigin='anonymous' src='https://c1.itigergrowth.com/portal5/static/js/homepage/index.84350de5.js' type='text/javascript')
+iframe(height='0' width='0' style='display: none; visibility: hidden;' src='//122178216.fls.doubleclick.net/activityi;src=122178216;type=invmedia;cat=flood0;ord=9205430612344;gtm=2wg8o0;auiddc=1974301231.1660908813;~oref=https%3A%2F%2Fwww.tigerbrokers.com.sg%2F?')
+.site-scrolltop
+  a.d-block(title='to top' href='#toTop')
+script(type='text/javascript' id='' src='https://js.adsrvr.org/up_loader.1.1.0.js')
+script(type='text/javascript' id='' src='https://js.adsrvr.org/up_loader.1.1.0.js')
+#batBeacon681540096276(style='width:0px; height:0px; display:none; visibility:hidden;')
+  img#batBeacon907560548440(style='width:0px; height:0px; display:none; visibility:hidden;' width='0' height='0' alt='' src='https://bat.bing.com/action/0?ti=137026706&Ver=2&mid=5ed2e470-aa2b-493e-b35e-818225c39c77&sid=cdd3dde026b911ed9ab585fcc6bb0cc7&vid=c19e04d01fb211ed829729ecad08faf4&vids=0&msclkid=302ee4c9c52f19cca4d887c2fae7a858-0&uach=pv%3D14.0.0&pi=918639831&lg=en-US&sw=1536&sh=864&sc=24&tl=Tiger%20Brokers%20_%20Hong%20Kong%20%2F%20U.S.%20Stock%20Market%20Quotes&kw=Tiger%20Brokers,%20U.S.%20stock%20trading,%20Hong%20Kong%20stock%20trading,%20trading%20U.S.%20stocks,%20stock%20information,%20stock%20prices,%20U.S.%20stock%20quotes,%20U.S.%20stock%20trading,%20Hong%20Kong%20stock%20trading,%20IPO%20trading,%20buying%20U.S.%20stocks,%20global%20investment&p=https%3A%2F%2Fwww.tigerbrokers.com.sg%2F&r=https%3A%2F%2Fwww.tigerbrokers.com.sg%2F&lt=451&evt=pageLoad&sv=1&rn=926291')
+script(type='text/javascript' id='').
+  ttd_dom_ready(function(){if("function"===typeof TTDUniversalPixelApi){var a=new TTDUniversalPixelApi;a.init("oq4whse",["u0zzenj"],"https://insight.adsrvr.org/track/up")}});
+script(type='text/javascript' id='').
+  ttd_dom_ready(function(){if("function"===typeof TTDUniversalPixelApi){var a=new TTDUniversalPixelApi;a.init("6uufndc",["j9knkqz"],"https://insight.adsrvr.org/track/up")}});
+iframe(src='https://bid.g.doubleclick.net/xbbe/pixel?d=KAE' style='display: none;')
+iframe#universal_pixel_u0zzenj(height='0' width='0' style='display:none;' src='https://insight.adsrvr.org/track/up?adv=oq4whse&ref=https%3A%2F%2Fwww.tigerbrokers.com.sg%2F&upid=u0zzenj&upv=1.1.0' title='TTD Universal Pixel')
+iframe#universal_pixel_j9knkqz(height='0' width='0' style='display:none;' src='https://insight.adsrvr.org/track/up?adv=6uufndc&ref=https%3A%2F%2Fwww.tigerbrokers.com.sg%2F&upid=j9knkqz&upv=1.1.0' title='TTD Universal Pixel')
