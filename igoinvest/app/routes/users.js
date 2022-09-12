@@ -18,7 +18,6 @@ let email;
 
 /* GET user profile. */
 router.get('/user', secured(), function (req, res) {
-  
   const { _raw, _json, ...userProfile } = req.user;
   user_id = userProfile.user_id;
   console.log(user_id);
@@ -43,6 +42,7 @@ router.post("/user/add", (req, res) => {
       res.status(200).send("Added a new user!");
     }
   );
+  connection.destroy();
 });
 
 module.exports = router;
