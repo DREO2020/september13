@@ -27,7 +27,7 @@ router.get('/user', secured(), function (req, res, next) {
 router.post("/user/add", (req, res) => {
   connection.query(
     `insert into users (first_name, last_name, nationality, country_of_residence, postal_code, email, 
-    date_of_birth, occupation) 
+    dob, occupation) 
     values ("Doraemon", "Tan", "Singaporean", "Singapore", "100042", "dreo2020@gmail.com", CURDATE(), "Unemployed")`,
     (errors, results) => {
       if (errors) {
