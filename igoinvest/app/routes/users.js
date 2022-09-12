@@ -49,7 +49,10 @@ function insertNewUser(data) {
 }
 
 router.post("/user/add", secured(), function (req, res) {
+  console.log("LOOOOOK HERRRRRRE");
   console.log(res.data);
+  console.log("REQQQQ");
+  console.log(req);
   setTimeout(() => {
     insertNewUser({
       "user_id": user_id,
