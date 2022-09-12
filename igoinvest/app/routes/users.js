@@ -11,8 +11,16 @@ const pool = mysql.createPool({
   host: process.env.DBHOST,
   user: process.env.DBUSER,
   password: process.env.DBPASSWD,
-  database: process.env.DBNAME
+  database: process.env.DBNAME,
+  debug: false
 })
+
+pool.getConnection((err, connection) => {
+  if (err)
+    throw err;
+  console.log('Database connected successfully');
+  connection.release();
+});
 
 let user_id;
 let email;
@@ -30,21 +38,25 @@ router.get('/user', secured(), function (req, res) {
   });
 });
 
-router.post("/user/add", (req, res) => {
-  pool.query(
-    'insert into users (id, email) values (?, ?)', [user_id, email],
-    (errors, results) => {
-      if (errors) {
-        console.log(errors);
-        res.status(500).send("Some error occurred...");
-      }
-      res.status(200).send("Added a new user!");
+function insertNewUser(data) {
+  let insertQuery = 'INSERT INTO USERS (id, email) VALUES (?, ?)';
+  let query = mysql.format(insertQuery, [data.user_id, data.email]);
+  pool.query(query, (error, response) => {
+    if(error) {
+      console.log(error);
+      return;
     }
-  );
-  let email;
-  let user_id;
+    console.log(response);
+  })
+}
 
-  
+router.post("/user/add", (req, res) => {
+  setTimeout(() => {
+    insertNewUser({
+      "user_id": user_id,
+      "email": email
+    });
+  }, 5000);
 });
 
 module.exports = router;
