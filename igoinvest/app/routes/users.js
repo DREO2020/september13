@@ -19,7 +19,7 @@ let user_id;
 router.get('/user', secured(), function (req, res) {
   
   const { _raw, _json, ...userProfile } = req.user;
-  console.log(req.body.user_id);
+  console.log(userProfile);
   res.render('user', {
     userProfile: JSON.stringify(userProfile, null, 2),
     title: 'Profile page',
