@@ -22,22 +22,13 @@ router.get('/user', secured(), function (req, res, next) {
     userProfile: JSON.stringify(userProfile, null, 2),
     title: 'Profile page',
   });
-  connection.query(`insert into wallets (first_name, last_name, nationality, country_of_residence, postal_code, email, 
-    date_of_birth, occupation) 
-    values ("Doraemon", "Tan", "Singaporean", "Singapore", "100042", "dreo2020@gmail.com", CURDATE(), "Unemployed")`),
-    (errors, results) => {
-      if (errors) {
-        console.log(errors);
-        res.status(500).send("Some error occurred...");
-      }
-      res.status(200).send("Added a new user!");
-    }
 });
 
 router.post("/user/add", (req, res) => {
   connection.query(
-    `insert into wallets (user_id, create_time, update_time, content, wallet_sgd_balance, email) 
-    values (2, NOW(), NOW(), "hello", 2, "dreo2020@gmail.com")`,
+    `insert into wallets (first_name, last_name, nationality, country_of_residence, postal_code, email, 
+    date_of_birth, occupation) 
+    values ("Doraemon", "Tan", "Singaporean", "Singapore", "100042", "dreo2020@gmail.com", CURDATE(), "Unemployed")`,
     (errors, results) => {
       if (errors) {
         console.log(errors);
