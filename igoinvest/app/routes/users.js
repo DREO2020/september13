@@ -29,9 +29,9 @@ router.post("/user/add", (req, res) => {
   console.log(req.email);
   connection.connect();
   connection.query(
-    `insert into users (first_name, last_name, nationality, country_of_residence, postal_code, email, 
+    `insert into users (id, first_name, last_name, nationality, country_of_residence, postal_code, email, 
     dob, occupation) 
-    values ("Doraemon", "Tan", "Singaporean", "Singapore", "100042", "dreo202@gmail.com", CURDATE(), "Unemployed")`,
+    values ("user001", "Doraemon", "Tan", "Singaporean", "Singapore", "100042", "dreo202@gmail.com", CURDATE(), "Unemployed")`,
     (errors, results) => {
       if (errors) {
         console.log(errors);
