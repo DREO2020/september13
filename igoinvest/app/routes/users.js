@@ -17,9 +17,9 @@ let user_id;
 
 /* GET user profile. */
 router.get('/user', secured(), function (req, res) {
-  console.log("TESTTTTTTT");
+  
   const { _raw, _json, ...userProfile } = req.user;
-  user_id = userProfile
+  console.log(req.body.user_id);
   res.render('user', {
     userProfile: JSON.stringify(userProfile, null, 2),
     title: 'Profile page',
