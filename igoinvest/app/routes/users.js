@@ -17,6 +17,7 @@ let user_id;
 
 /* GET user profile. */
 router.get('/user', secured(), function (req, res) {
+  console.log("TESTTTTTTT");
   const { _raw, _json, ...userProfile } = req.user;
   user_id = userProfile
   res.render('user', {
@@ -26,7 +27,7 @@ router.get('/user', secured(), function (req, res) {
 });
 
 router.post("/user/add", (req, res) => {
-  console.log(req.email);
+  // console.log(req.email);
   connection.connect();
   connection.query(
     `insert into users (id, first_name, last_name, nationality, country_of_residence, postal_code, email, 
