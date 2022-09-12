@@ -54,7 +54,9 @@ app.use(cookieParser());
 // config express-session
 const sess = {
   secret: process.env.EXPRESS_SESSION_SECRET,
-  cookie: {},
+  cookie: {
+    secure:true, 
+    maxAge: 60000},
   resave: false,
   saveUninitialized: true,
 };
