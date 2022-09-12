@@ -33,16 +33,17 @@ router.post("/user/add", (req, res) => {
   // console.log(req.email);
   connection.connect();
   connection.query(
-    'insert into users (id, first_name, last_name, nationality, country_of_residence, postal_code, email, dob, occupation) values (?, "Doraemon", "Tan", "Singaporean", "Singapore", "100042", ?, CURDATE(), "Unemployed")', [user_id, email],
+    'insert into users (id, email) values (?, ?)', [user_id, email],
     (errors, results) => {
       if (errors) {
         console.log(errors);
         res.status(500).send("Some error occurred...");
       }
       res.status(200).send("Added a new user!");
+      connection.destroy();
     }
   );
-  connection.destroy();
+  
 });
 
 module.exports = router;
