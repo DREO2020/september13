@@ -13,11 +13,12 @@ const connection = mysql.createConnection({
   database: process.env.DBNAME
 })
 
-connection.connect();
+let user_id;
 
 /* GET user profile. */
-router.get('/user', secured(), function (req, res, next) {
+router.get('/user', secured(), function (req, res) {
   const { _raw, _json, ...userProfile } = req.user;
+  user_id = userProfile
   res.render('user', {
     userProfile: JSON.stringify(userProfile, null, 2),
     title: 'Profile page',
@@ -25,10 +26,12 @@ router.get('/user', secured(), function (req, res, next) {
 });
 
 router.post("/user/add", (req, res) => {
+  console.log(req.email);
+  connection.connect();
   connection.query(
     `insert into users (first_name, last_name, nationality, country_of_residence, postal_code, email, 
     dob, occupation) 
-    values ("Doraemon", "Tan", "Singaporean", "Singapore", "100042", "dreo2020@gmail.com", CURDATE(), "Unemployed")`,
+    values ("Doraemon", "Tan", "Singaporean", "Singapore", "100042", "dreo202@gmail.com", CURDATE(), "Unemployed")`,
     (errors, results) => {
       if (errors) {
         console.log(errors);
