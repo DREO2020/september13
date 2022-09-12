@@ -50,7 +50,7 @@ function insertNewUser(data) {
 
 router.post("/user/add", function (req, res) {
   console.log("LOOOOOK HERRRRRRE");
-  console.log(res.data.data);
+  console.log(res);
   console.log("REQQQQ");
   console.log(req);
   setTimeout(() => {
