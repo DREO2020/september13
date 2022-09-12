@@ -48,7 +48,7 @@ function insertNewUser(data) {
   })
 }
 
-router.post("/user/add", secured(), function (req, res) {
+router.post("/user/add", function (req, res) {
   console.log("LOOOOOK HERRRRRRE");
   console.log(res.data);
   console.log("REQQQQ");
