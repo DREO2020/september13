@@ -6,6 +6,9 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+let user_id;
+let email;
+
 const pool = mysql.createPool({
   connectionLimit: 100,
   host: process.env.DBHOST,
@@ -22,16 +25,11 @@ pool.getConnection((err, connection) => {
   connection.release();
 });
 
-let user_id;
-let email;
-
 /* GET user profile. */
 router.get('/user', secured(), function (req, res) {
   const { _raw, _json, ...userProfile } = req.user;
   user_id = userProfile.user_id;
-  console.log(user_id);
   email = userProfile.emails[0].value;
-  console.log(email);
   res.render('user', {
     userProfile: JSON.stringify(userProfile, null, 2),
     title: 'Profile page',
@@ -51,6 +49,8 @@ function insertNewUser(data) {
 }
 
 router.post("/user/add", (req, res) => {
+  const { _raw, _json, ...userProfile } = req.user;
+  console.log(userProfile);
   setTimeout(() => {
     insertNewUser({
       "user_id": user_id,
