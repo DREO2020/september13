@@ -40,7 +40,6 @@ router.post("/user/add", (req, res) => {
         res.status(500).send("Some error occurred...");
       }
       res.status(200).send("Added a new user!");
-      connection.destroy();
     }
   );
   
