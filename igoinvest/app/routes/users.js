@@ -6,9 +6,6 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-let user_id;
-let email;
-
 const pool = mysql.createPool({
   connectionLimit: 100,
   host: process.env.DBHOST,
@@ -49,6 +46,9 @@ function insertNewUser(data) {
 }
 
 router.post("/user/add", function (req, res) {
+  const { _raw, _json, ...userProfile } = req.user;
+  let user_id = userProfile.user_id;
+  let email = userProfile.emails[0].value;
   // console.log("LOOOOOK HERRRRRRE");
   // console.log(res);
   // console.log("REQQQQ");
